@@ -6,6 +6,7 @@ import { PLACEHOLDER, ERROR_MESSAGE } from "@/lib/constant";
 
 import Input from "./form/Input";
 import PasswordInput from "./form/PasswordInput";
+import Cta from "./Cta";
 
 import styles from "./SignInForm.module.scss";
 import classNames from "classnames/bind";
@@ -19,7 +20,7 @@ const SignInForm = () => {
   });
 
   return (
-    <form className={cx("form")}>
+    <form className={cx("form")}  onSubmit={handleSubmit((data) => console.log(data))}>
       <div className={cx("input-box")}>
         <label className={cx("label")}>이메일</label>
         <Controller
@@ -57,7 +58,7 @@ const SignInForm = () => {
         />
       </div>
       <button className={cx("button")} type="submit">
-        {/* <Cta>로그인</Cta> */}
+        <Cta>로그인</Cta>
       </button>
     </form>
   );
