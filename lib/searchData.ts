@@ -4,7 +4,7 @@ interface LinksData {
   description: string | null;
 }
 
-export function filterByKeyword(links, keyword: string) {
+export function filterByKeyword(links: any, keyword: string) {
   const lowered = keyword.toLowerCase();
 
   const filteredLinks = links.filter(({ url, title, description }: LinksData) => 
