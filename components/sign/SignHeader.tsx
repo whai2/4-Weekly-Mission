@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Url } from "next/dist/shared/lib/router/router";
 
 import LinkbraryIcon from "@/public/logo.svg";
-import { ROUTE } from "@/lib/constant"
+import { ROUTE } from "@/lib/constant";
 
 import classNames from "classnames/bind";
 import styles from "./SignHeader.module.scss";
@@ -33,7 +33,7 @@ const SignHeader = ({ message, link }: SignHeaderProps) => {
         </Link>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default SignHeader
+export default SignHeader;

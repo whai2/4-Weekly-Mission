@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Controller, useForm } from "react-hook-form";
 
@@ -20,20 +20,26 @@ const SignInForm = () => {
   });
 
   return (
-    <form className={cx("form")}  onSubmit={handleSubmit((data) => console.log(data))}>
+    <form
+      className={cx("form")}
+      onSubmit={handleSubmit((data) => console.log(data))}
+    >
       <div className={cx("input-box")}>
         <label className={cx("label")}>이메일</label>
         <Controller
           control={control}
           name="email"
           rules={{
-            required: ERROR_MESSAGE.emailRequired,
-            pattern: { value: /\S+@\S+\.\S+/, message: ERROR_MESSAGE.emailInvalid },
+            required: ERROR_MESSAGE.signin.emailRequired,
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: ERROR_MESSAGE.signin.emailInvalid,
+            },
           }}
           render={({ field, fieldState }) => (
             <Input
               {...field}
-              placeholder={PLACEHOLDER.email}
+              placeholder={PLACEHOLDER.signin.email}
               hasError={Boolean(fieldState.error)}
               helperText={fieldState.error?.message}
             />
@@ -45,12 +51,12 @@ const SignInForm = () => {
         <Controller
           control={control}
           name="password"
-          rules={{ required: ERROR_MESSAGE.passwordRequired }}
+          rules={{ required: ERROR_MESSAGE.signin.passwordRequired }}
           render={({ field, fieldState }) => (
             <PasswordInput
               {...field}
               hasEyeIcon
-              placeholder={PLACEHOLDER.password}
+              placeholder={PLACEHOLDER.signin.password}
               hasError={Boolean(fieldState.error)}
               helperText={fieldState.error?.message}
             />
@@ -64,4 +70,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm
+export default SignInForm;
