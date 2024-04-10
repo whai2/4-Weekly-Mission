@@ -2,7 +2,7 @@
 
 import { Controller, useForm } from "react-hook-form";
 
-import { PLACEHOLDER, ERROR_MESSAGE } from "@/lib/constant";
+import { PLACEHOLDER, ERROR_MESSAGE, REGEX } from "@/lib/constant";
 
 import Input from "./form/Input";
 import PasswordInput from "./form/PasswordInput";
@@ -32,7 +32,7 @@ const SignInForm = () => {
           rules={{
             required: ERROR_MESSAGE.signin.emailRequired,
             pattern: {
-              value: /\S+@\S+\.\S+/,
+              value: REGEX.EMAIL,
               message: ERROR_MESSAGE.signin.emailInvalid,
             },
           }}

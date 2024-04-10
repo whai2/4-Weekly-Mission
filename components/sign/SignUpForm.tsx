@@ -2,7 +2,7 @@
 
 import { Controller, useForm } from "react-hook-form";
 
-import { PLACEHOLDER, ERROR_MESSAGE } from "@/lib/constant";
+import { PLACEHOLDER, ERROR_MESSAGE, REGEX } from "@/lib/constant";
 import { duplicationCheck } from "@/apis/api";
 
 import Input from "./form/Input";
@@ -13,11 +13,6 @@ import styles from "./SignUpForm.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
-
-const REGEX = {
-  EMAIL: /\S+@\S+\.\S+/,
-  PASSWORD: /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
-}
 
 const SignUpForm = () => {
   const { control, handleSubmit, watch } = useForm({
