@@ -12,7 +12,12 @@ export function useTokenToRedirect(tokenResponse?: string) {
       router.replace(ROUTE.폴더);
     };
 
-    if (accessTokenInLocalStorage === tokenResponse) {
+    if (tokenResponse) {
+      routeToFolderPage();
+      return;
+    }
+
+    if (accessTokenInLocalStorage) {
       routeToFolderPage();
     }
   }, [tokenResponse, router]);

@@ -5,6 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 
 import { PLACEHOLDER, ERROR_MESSAGE, REGEX } from "@/lib/constant";
 import { signIn } from "@/apis/api";
+import { useTokenToRedirect } from "@/hooks/useTokenToRedirect";
 
 import Input from "./form/Input";
 import PasswordInput from "./form/PasswordInput";
@@ -12,7 +13,6 @@ import Cta from "./Cta";
 
 import styles from "./SignInForm.module.scss";
 import classNames from "classnames/bind";
-import { useTokenToRedirect } from "@/hooks/useTokenToRedirect";
 
 const cx = classNames.bind(styles);
 
@@ -38,7 +38,6 @@ const SignInForm = () => {
       return false;
     }
   }
-  
 
   return (
     <form

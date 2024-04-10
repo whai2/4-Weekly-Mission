@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { PLACEHOLDER, ERROR_MESSAGE, REGEX } from "@/lib/constant";
 import { duplicationCheck } from "@/apis/api";
+import { useTokenToRedirect } from "@/hooks/useTokenToRedirect";
 
 import Input from "./form/Input";
 import PasswordInput from "./form/PasswordInput";
@@ -21,10 +23,28 @@ const SignUpForm = () => {
     reValidateMode: "onBlur",
   });
 
+  const [token, setToken] = useState('');
+  useTokenToRedirect(token);
+  
+  const onSubmitForSingUp = async (data: any) => {
+    // try {
+    //   const loginResponse = await signIn(data?.email, data?.password);
+    //   const json = await loginResponse.json();
+      
+    //   if (json?.data.accessToken) {
+    //     localStorage.setItem("accessToken", json.data.accessToken);
+    //   }
+      
+    //   setToken(json?.data.accessToken);
+    // } catch (err) {
+    //   return false;
+    // }
+  }
+
   return (
     <form
       className={cx("form")}
-      onSubmit={handleSubmit((data) => console.log(data))}
+      onSubmit={handleSubmit(onSubmitForSingUp)}
     >
       <div className={cx("input-box")}>
         <label className={cx("label")}>이메일</label>
