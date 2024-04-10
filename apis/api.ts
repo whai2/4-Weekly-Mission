@@ -4,6 +4,7 @@ const API_URL = {
   FOLDER_LIST: "https://bootcamp-api.codeit.kr/api/users/1/folders",
   SHARED: "https://bootcamp-api.codeit.kr/api/sample/folder",
   USER_CHECK: "https://bootcamp-api.codeit.kr/api/check-email",
+  SIGN_IN: "https://bootcamp-api.codeit.kr/api/sign-in",
 };
 
 export async function getUser() {
@@ -35,17 +36,33 @@ export async function getShared() {
   return body;
 }
 
-export async function duplicationCheck(id: string) {
+export async function duplicationCheck(email: string) {
   const response = await fetch(API_URL.USER_CHECK, {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
-    body: JSON.stringify({ email: id }),
+    body: JSON.stringify({ email: email }),
   });
 
   if (response.ok === false) {
     throw new Error("duplication");
+  }
+
+  return response;
+}
+
+export async function signIn(email: string, password: string) {
+  const response = await fetch(API_URL.SIGN_IN, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ email: email, password: password}),
+  });
+
+  if (response.ok === false) {
+    throw new Error("login failed");
   }
 
   return response;
